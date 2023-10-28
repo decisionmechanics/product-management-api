@@ -14,3 +14,9 @@ To view the OpenAPI documentation, browse to
 ```
 http://localhost:8080/api-docs/
 ```
+
+The app is also packaged as a Docker image. To run it
+
+```bash
+docker run -p 8080:8080 -d --name product-management-api --rm andrewtait/product-management-api
+```
