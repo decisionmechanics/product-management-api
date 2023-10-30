@@ -1,6 +1,6 @@
 enum TransactionType {
-  AddStock,
-  RemoveStock,
+  AddStock = "AddStock",
+  RemoveStock = "RemoveStock",
 }
 
 export default TransactionType;
