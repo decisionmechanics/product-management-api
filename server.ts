@@ -39,7 +39,7 @@ const swaggerSpecification = swaggerJSDoc({
       },
     ],
   },
-  apis: ["./routes/*.js", "./dist/routes/*.js"],
+  apis: ["./routes/*.{js,ts}"],
 });
 
 app.use(
