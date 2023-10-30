@@ -62,8 +62,9 @@ import { fetchSiteBySiteId } from "../repository/siteRepository.js";
 
 const router = Router();
 
-router.get("/:id", async (req: Request<{ id: number }>, res: Response) => {
-  const site = await fetchSiteBySiteId(req.params.id);
+router.get("/:id", async (req: Request, res: Response) => {
+  const siteId = Number(req.params.id);
+  const site = await fetchSiteBySiteId(siteId);
 
   res.json(site);
 });

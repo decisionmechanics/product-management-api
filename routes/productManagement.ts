@@ -152,12 +152,10 @@ router.get("/", async (_: Request, res: Response) => {
 });
 
 router.get("/:id", async (req: Request, res: Response) => {
-  const warehouseId = parseFloat(req.params.id);
-  const warehouse = await fetchProductByProductId(warehouseId);
+  const productId = parseFloat(req.params.id);
+  const product = await fetchProductByProductId(productId);
 
-  console.log("warehouse", warehouse);
-
-  res.json(warehouse);
+  res.json(product);
 });
 
 router.post("/", async (req: Request, res: Response) => {

@@ -1,3 +1,4 @@
+import IInventoryTransaction from "../models/inventoryTransaction.js";
 import IWarehouse from "../models/warehouse.js";
 import {
   removeWarehouse as removeProductWarehouses,
@@ -134,4 +135,20 @@ export const deleteWarehouse = (warehouseId: number): Promise<IWarehouse> => {
   removeProductWarehouses(warehouseId);
 
   return Promise.resolve(warehouse);
+};
+
+export const transact = (
+  transaction: IInventoryTransaction
+): Promise<IInventoryTransaction> => {
+  const warehouse = warehouses.find(
+    ({ warehouseId }) => warehouseId === transaction.warehouseId
+  );
+
+  if (warehouse) {
+    warehouse.productId = transaction.productId;
+    warehouse.qoh = transaction.amount;
+    warehouse.transactions = [...(warehouse.transactions ?? []), transaction];
+  }
+
+  return Promise.resolve(transaction);
 };
